@@ -1,0 +1,24 @@
+{
+"/**/ITEMS" : "",
+"item.nch.lantern_berries" : "Lantern Berries",
+"item.nch.white_bud_leaves" : "White Bud Leaves",
+"item.nch.raw_iron" : "Raw Iron",
+"item.nch.raw_gold" : "Raw Gold",
+"item.nch.raw_black_tungsten" : "Raw Black Tungsten",
+"item.nch.black_tungsten_ingot" : "Black Tungsten Ingot",
+
+
+"/**/BLOCKS" : "",
+"block.nch.silverblanc_stone" : "Silverblanc Stone",
+"block.nch.silverblanc_iron_ore" : "Silverblanc Iron Ore",
+"block.nch.silverblanc_black_tungsten_ore" : "Silverblanc Black Tungsten Ore",
+"block.nch.silverblanc_gold_ore" : "Silverblanc Gold Ore",
+"block.nch.silverblanc_diamond_ore" : "Silverblanc Diamond Ore",
+"block.nch.cosmic_sand" : "Cosmic Sand",
+
+
+"/**/OTHERS" : "",
+"itemGroup.nch_items" : "Nebula Chronicles - Misc",
+"itemGroup.nch_world" : "Nebula Chronicles - World"
+
+}

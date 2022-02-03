@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "nch:block/moss_silverblanc_stone"
+      },
+      {
+        "model": "nch:block/moss_silverblanc_stone",
+        "y": 90
+      },
+      {
+        "model": "nch:block/moss_silverblanc_stone",
+        "y": 180
+      },
+      {
+        "model": "nch:block/moss_silverblanc_stone",
+        "y": 270
+      }
+    ]
+  }
+}

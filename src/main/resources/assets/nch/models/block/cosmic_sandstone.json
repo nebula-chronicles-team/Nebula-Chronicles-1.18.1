@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/cube_bottom_top",
+    "textures": {
+      "top": "nch:blocks/cosmic_sandstone_top",
+      "bottom": "nch:blocks/cosmic_sandstone_side",
+      "side": "nch:blocks/cosmic_sandstone_side"
+    }
+  }
