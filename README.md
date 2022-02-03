@@ -6,8 +6,8 @@
 ## NebulaChronicles Team
 
 **Contributor** 
-+ zoshsgahdnkc（豆焰）
-+ beanflame（海参）
++ zoshsgahdnkc（海参）
++ beanflame（豆焰）
 
 
 
