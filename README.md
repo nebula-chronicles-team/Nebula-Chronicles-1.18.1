@@ -15,8 +15,8 @@
 
 Gradle Ver ：`7.2`（需要JDK17）
 
-ForgeGradle Ver ： `5.1.+`
+ForgeGradle Ver ： `5.1.+`（需要JDK17）
 
-MCP Ver ： `1.18.1`
+MCP Ver ： `1.18.1`（需要JDK17）
 
-Forge Ver ： `1.18.1`
+Forge Ver ： `1.18.1`（需要JDK17）
