@@ -13,6 +13,12 @@ public class NchCreativeModeTab {
         }
     };
 
+    public static final CreativeModeTab NCH_INDUSTRIAL_ITEMS = new CreativeModeTab(getLabel("nch_industrial_items")) {
+        public ItemStack makeIcon() {
+            return new ItemStack(NchItems.WHITE_BUD_LEAVES.get());
+        }
+    };
+
     public static final CreativeModeTab NCH_WORLD = new CreativeModeTab(getLabel("nch_world")) {
         public ItemStack makeIcon() {
             return new ItemStack(Items.STONE);
