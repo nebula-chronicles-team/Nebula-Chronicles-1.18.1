@@ -53,6 +53,8 @@ public class NebulaChronicles {
         LOGGER.info("HELLO from server starting");
     }
 
+
+
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
