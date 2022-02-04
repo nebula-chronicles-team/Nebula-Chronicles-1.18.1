@@ -18,7 +18,7 @@
 
 
 "/**/OTHERS" : "",
-"itemGroup.nch_items" : "Nebula Chronicles - Misc",
-"itemGroup.nch_world" : "Nebula Chronicles - World"
+"itemGroup.nch.nch_items" : "Nebula Chronicles - Misc",
+"itemGroup.nch.nch_world" : "Nebula Chronicles - World"
 
 }
