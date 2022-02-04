@@ -12,7 +12,7 @@ license = "All rights reserved"
     #  credits = "Thanks for this example mod goes to Java" #optional
     authors = "NebulaChronicles Team"
     description = '''
-    
+    Blank !
     '''
 [[dependencies.nch]] #optional
     modId = "forge" #mandatory
