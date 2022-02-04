@@ -1,6 +1,5 @@
 package io.github.nebulachroniclesteam.nebulachronicles;
 
-import io.github.nebulachroniclesteam.nebulachronicles;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
