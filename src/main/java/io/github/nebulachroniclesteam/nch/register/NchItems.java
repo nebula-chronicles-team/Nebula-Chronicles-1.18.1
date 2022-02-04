@@ -28,4 +28,6 @@ public class NchItems {
             BLACK_TUNGSTEN_DUST = ITEMS.register("black_tungsten_dust", () -> new Item(new Item.Properties().tab(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS)));
 
 
+
+
 }
