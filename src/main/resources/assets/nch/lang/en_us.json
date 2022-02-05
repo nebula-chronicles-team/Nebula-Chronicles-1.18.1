@@ -18,8 +18,8 @@
 
 
 "/**/OTHERS" : "",
-"itemGroup.nch.nch_items" : "Nebula Chronicles - Misc",
+"itemGroup.nch.nch_misc_items" : "Nebula Chronicles - Misc",
 "itemGroup.nch.nch_industrial_items" : "Nebula Chronicles - Industrial Items",
-"itemGroup.nch.nch_world" : "Nebula Chronicles - World"
-
+"itemGroup.nch.nch_world" : "Nebula Chronicles - World",
+"itemGroup.nch.nch_industrial_blocks" : "Nebula Chronicles - Industrial Blocks"
 }
