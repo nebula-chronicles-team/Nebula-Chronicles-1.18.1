@@ -15,7 +15,7 @@ public class NchCreativeModeTab {
 
     public static final CreativeModeTab NCH_INDUSTRIAL_ITEMS = new CreativeModeTab(getLabel("nch_industrial_items")) {
         public ItemStack makeIcon() {
-            return new ItemStack(NchItems.WHITE_BUD_LEAVES.get());
+            return new ItemStack(NchItems.RAW_BLACK_TUNGSTEN.get());
         }
     };
 
