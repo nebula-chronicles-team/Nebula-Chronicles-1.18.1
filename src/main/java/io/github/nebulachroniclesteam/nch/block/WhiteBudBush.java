@@ -3,6 +3,9 @@ package io.github.nebulachroniclesteam.nch.block;
 
 import io.github.nebulachroniclesteam.nch.item.NchItemTags;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
+import io.github.nebulachroniclesteam.nch.util.ILootableBlock;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -24,6 +27,14 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -32,7 +43,7 @@ import net.minecraftforge.common.ForgeHooks;
 
 import java.util.Random;
 
-public class WhiteBudBush extends BushBlock implements BonemealableBlock {
+public class WhiteBudBush extends BushBlock implements BonemealableBlock, ILootableBlock {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
 
@@ -124,4 +135,17 @@ public class WhiteBudBush extends BushBlock implements BonemealableBlock {
         int i = Math.min(2, getAge(pState) + 1);
         pLevel.setBlock(pPos, pState.setValue(AGE, i), 2);
     }
+
+    @Override
+    public LootTable.Builder createLootBuilder() {
+        LootItemBlockStatePropertyCondition.Builder isGrown = LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(this)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(AGE, 2));
+        LootItemCondition.Builder useAxe = MatchTool.toolMatches(ItemPredicate.Builder.item().of(NchItemTags.AXES));
+        // drop (1 or 2 if use axe and is grown) leaves
+        return LootTable.lootTable().withPool(applyExplosionCondition(LootPool.lootPool()
+                .add(LootItem.lootTableItem(this)
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2)).when(useAxe).when(isGrown)))));
+    }
+
 }
