@@ -24,9 +24,9 @@ public class NchBlockStateProvider extends BlockStateProvider {
                 .partialState().with(WhiteBudBush.AGE, 0).modelForState()
                 .modelFile(tintedCross(name(NchBlocks.WHITE_BUD_BUSH) + "_0", "white_bud_bush_0")).addModel()
                 .partialState().with(WhiteBudBush.AGE, 1).modelForState()
-                .modelFile(tintedCross(name(NchBlocks.WHITE_BUD_BUSH) + "_1", "white_bud_bush_1")).addModel()
+                .modelFile(tintedCross(name(NchBlocks.WHITE_BUD_BUSH) + "_0", "white_bud_bush_0")).addModel()
                 .partialState().with(WhiteBudBush.AGE, 2).modelForState()
-                .modelFile(tintedCross(name(NchBlocks.WHITE_BUD_BUSH) + "_2", "white_bud_bush_2")).addModel();
+                .modelFile(tintedCross(name(NchBlocks.WHITE_BUD_BUSH) + "_1", "white_bud_bush_1")).addModel();
     }
 
     private String name(RegistryObject<?> block) {
@@ -34,6 +34,6 @@ public class NchBlockStateProvider extends BlockStateProvider {
     }
 
     private BlockModelBuilder tintedCross(String name, String texture) {
-        return models().singleTexture(name, tintedCross, "cross", modLoc("blocks/" + texture));
+        return models().singleTexture(name, tintedCross, "cross", modLoc("block/" + texture));
     }
 }

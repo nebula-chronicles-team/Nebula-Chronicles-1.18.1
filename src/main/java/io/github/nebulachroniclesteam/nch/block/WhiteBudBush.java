@@ -1,9 +1,11 @@
 package io.github.nebulachroniclesteam.nch.block;
 
 
+import io.github.nebulachroniclesteam.nch.item.NchItemTags;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -33,6 +35,9 @@ import java.util.Random;
 public class WhiteBudBush extends BushBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
+
+    private static final VoxelShape VS_SMALL = Block.box(3, 0, 3, 13, 9, 13);
+    private static final VoxelShape VS_FULL = Block.box(1, 0, 1, 15, 13, 15);
 
     public WhiteBudBush() {
         super(Properties.of(Material.PLANT)
@@ -80,23 +85,28 @@ public class WhiteBudBush extends BushBlock implements BonemealableBlock {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (isMaxAge(pState)) {
-            popResource(pLevel, pPos, new ItemStack(NchItems.WHITE_BUD_LEAVES.get()));
-            float pitch = 0.8f + pLevel.random.nextFloat() * 4;
-            pLevel.playSound(null, pPos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1, pitch);
-            pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
-            return InteractionResult.PASS;
-        }
-        if (!isMaxAge(pState) && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
-            return InteractionResult.PASS;
+        if (!pLevel.isClientSide && pPlayer instanceof ServerPlayer sp) {
+            ItemStack itemInHand = pPlayer.getItemInHand(pHand);
+            if (isMaxAge(pState)) {
+                if (itemInHand.is(NchItemTags.AXES)) {
+                    popResource(pLevel, pPos, new ItemStack(NchItems.WHITE_BUD_LEAVES.get()));
+                    itemInHand.hurt(1, pLevel.random, sp);
+                    float pitch = 0.8f + pLevel.random.nextFloat() * 4;
+                    pLevel.playSound(null, pPos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1, pitch);
+                    pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
+                    return InteractionResult.PASS;
+                }
+            }
+            if (!isMaxAge(pState) && itemInHand.is(Items.BONE_MEAL)) {
+                return InteractionResult.PASS;
+            }
         }
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        // todo by luqin2007: set bud size
-        return super.getShape(pState, pLevel, pPos, pContext);
+        return isMaxAge(pState) ? VS_FULL : VS_SMALL;
     }
 
     @Override

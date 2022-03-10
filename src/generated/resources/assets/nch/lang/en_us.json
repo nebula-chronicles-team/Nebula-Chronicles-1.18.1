@@ -1,4 +1,15 @@
 {
   "block.nch.white_bud_bush": "White Bud",
-  "item.nch.white_bud_leaves": "White Bud Leaves"
+  "item.nch.black_tungsten_dust": "Black Tungsten Dust",
+  "item.nch.black_tungsten_ingot": "Black Tungsten Ingot",
+  "item.nch.black_tungsten_nugget": "Black Tungsten Nugget",
+  "item.nch.bug_flesh": "Bug Flesh",
+  "item.nch.lantern_berries": "Lantern Berries",
+  "item.nch.raw_black_tungsten": "Raw Black Tungsten",
+  "item.nch.white_bud_leaves": "White Bud Leaves",
+  "item.nch.white_bud_stew": "White Bud Stew",
+  "itemGroup.nch.nch_industrial_blocks": "Nebula Chronicles - Industrial Blocks",
+  "itemGroup.nch.nch_industrial_items": "Nebula Chronicles - Industrial Items",
+  "itemGroup.nch.nch_misc_items": "Nebula Chronicles - Misc",
+  "itemGroup.nch.nch_world": "Nebula Chronicles - World"
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/tinted_cross",
   "textures": {
-    "cross": "nch:blocks/white_bud_bush_1"
+    "cross": "nch:block/white_bud_bush_1"
   }
 }

@@ -15,7 +15,14 @@ public class GenEventHandler {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
+        NchBlockTagsProvider bp;
+
+        generator.addProvider(new NchItemModelProvider(generator, existingFileHelper));
         generator.addProvider(new NchBlockStateProvider(generator, existingFileHelper));
-        generator.addProvider(new NchLanguageProvider(generator));
+        generator.addProvider(new NchLangProviderEn(generator));
+        generator.addProvider(new NchLangProviderZh(generator));
+        generator.addProvider(bp = new NchBlockTagsProvider(generator, existingFileHelper));
+        generator.addProvider(new NchItemTagsProvider(generator, bp, existingFileHelper));
+        generator.addProvider(new NchLootProvider(generator));
     }
 }

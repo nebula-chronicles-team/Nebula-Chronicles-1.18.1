@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nch:item/metal/raw_black_tungsten"
+  }
+}

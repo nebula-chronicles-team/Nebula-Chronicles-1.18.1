@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "tag": "forge:axes"
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "nch:white_bud_bush",
+                  "properties": {
+                    "age": "2"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "add": false
+            }
+          ],
+          "name": "nch:white_bud_leaves"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ]
+}
