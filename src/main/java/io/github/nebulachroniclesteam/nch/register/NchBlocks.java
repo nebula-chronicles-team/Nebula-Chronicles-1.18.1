@@ -1,12 +1,16 @@
 package io.github.nebulachroniclesteam.nch.register;
 
 import io.github.nebulachroniclesteam.nch.NebulaChronicles;
+import io.github.nebulachroniclesteam.nch.block.WhiteBudBush;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class NchBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, NebulaChronicles.MOD_ID);
+
+    public static final RegistryObject<Block> WHITE_BUD_BUSH = BLOCKS.register("white_bud_bush", WhiteBudBush::new);
 
 
 
