@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "nch:block/chiseled_silverblanc_stone_bricks"
+  }
+}

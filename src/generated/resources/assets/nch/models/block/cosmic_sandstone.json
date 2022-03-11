@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "nch:block/cosmic_sandstone_side",
+    "end": "nch:block/cosmic_sandstone_top"
+  }
+}

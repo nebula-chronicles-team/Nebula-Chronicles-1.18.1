@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "nch:block/moss_silverblanc_stone_side",
+    "bottom": "nch:block/moss_silverblanc_stone_bottom",
+    "top": "nch:block/moss_silverblanc_stone_top2"
+  }
+}

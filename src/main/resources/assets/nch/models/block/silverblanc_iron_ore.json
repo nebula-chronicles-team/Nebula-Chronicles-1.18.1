@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures":{
-        "all": "nch:blocks/silverblanc_iron_ore"
-    }
-
-    
-}

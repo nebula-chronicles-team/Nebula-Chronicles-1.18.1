@@ -34,12 +34,17 @@ public class NchLangProviderZh extends LanguageProvider {
         addItem(NchItems.BLACK_TUNGSTEN_NUGGET, "青钨粒");
 
         addBlock(NchBlocks.WHITE_BUD_BUSH, "白芽灌木");
-//        addBlock(NchBlocks.SILVERBLANC_STONE, "Silverblanc Stone");
-//        addBlock(NchBlocks.SILVERBLANC_IRON_ORE, "Silverblanc Iron Ore");
-//        addBlock(NchBlocks.SILVERBLANC_BLOCK_TUNGSTEN_ORE, "Silverblanc Black Tungsten Ore");
-//        addBlock(NchBlocks.SILVERBLANC_GOLD_ORE, "Silverblanc Gold Ore");
-//        addBlock(NchBlocks.SILVERBLANC_DIAMOND_ORE, "Silverblanc Diamond Ore");
-//        addBlock(NchBlocks.COSMIC_SAND, "Cosmic Sand");
+        addBlock(NchBlocks.COSMIC_SAND, "太空砂");
+        addBlock(NchBlocks.COSMIC_SANDSTONE, "太空砂岩");
+        addBlock(NchBlocks.SILVERBLANC_STONE, "银白岩");
+        addBlock(NchBlocks.MOSS_SILVERBLANC_STONE, "苔藓银白岩");
+        addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS, "银白石砖");
+        addBlock(NchBlocks.CHISELED_SILVERBLANC_STONE_BRICKS, "錾制银白石砖");
+        addBlock(NchBlocks.SILVERBLANC_IRON_ORE, "银白铁矿");
+        addBlock(NchBlocks.SILVERBLANC_GOLD_ORE, "银白金矿");
+        addBlock(NchBlocks.SILVERBLANC_BLACK_TUNGSTEN_ORE, "银白青钨矿");
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_DIAMOND_ORE, "银白基岩钻石矿");
+        addBlock(NchBlocks.WHITE_BUD, "白芽");
     }
 
     private void addGroup(CreativeModeTab tab, String name) {

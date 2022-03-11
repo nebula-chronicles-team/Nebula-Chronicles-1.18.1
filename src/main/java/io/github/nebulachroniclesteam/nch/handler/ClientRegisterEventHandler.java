@@ -22,6 +22,7 @@ public class ClientRegisterEventHandler {
     @SubscribeEvent
     public static void onRegisterBlockRenderType(ModelRegistryEvent event) {
         ItemBlockRenderTypes.setRenderLayer(NchBlocks.WHITE_BUD_BUSH.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.WHITE_BUD.get(), RenderType.cutoutMipped());
     }
 
     @SubscribeEvent

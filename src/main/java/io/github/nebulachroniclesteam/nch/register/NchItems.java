@@ -5,11 +5,17 @@ import io.github.nebulachroniclesteam.nch.item.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import static io.github.nebulachroniclesteam.nch.register.NchCreativeModeTab.*;
+import static io.github.nebulachroniclesteam.nch.register.NchCreativeModeTab.NCH_WORLD;
 
 public class NchItems {
 
@@ -17,16 +23,34 @@ public class NchItems {
 
     public static final RegistryObject<Item>
             // NCH_MISC_ITEMS
-            WHITE_BUD_LEAVES = ITEMS.register("white_bud_leaves", () -> new ItemNameBlockItem(NchBlocks.WHITE_BUD_BUSH.get(), new Item.Properties().tab(NchCreativeModeTab.NCH_MISC_ITEMS))),
-            WHITE_BUD_STEW = ITEMS.register("white_bud_stew", () -> new WhiteBudStew(new Item.Properties().tab(NchCreativeModeTab.NCH_MISC_ITEMS).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build()))),
-            LANTERN_BERRIES = ITEMS.register("lantern_berries", () -> new LanternBerries(new Item.Properties().tab(NchCreativeModeTab.NCH_MISC_ITEMS).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).effect(new MobEffectInstance(MobEffects.GLOWING, 300, 0), 1.0F).effect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300, 0), 1.0F).build()))),
-            BUG_FLESH = ITEMS.register("bug_flesh", () -> new BugFlesh(new Item.Properties().tab(NchCreativeModeTab.NCH_MISC_ITEMS).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build()))),
+            WHITE_BUD_STEW = ITEMS.register("white_bud_stew", () -> new WhiteBudStew(new Item.Properties().tab(NCH_MISC_ITEMS).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).build()))),
+            LANTERN_BERRIES = ITEMS.register("lantern_berries", () -> new LanternBerries(new Item.Properties().tab(NCH_MISC_ITEMS).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).effect(new MobEffectInstance(MobEffects.GLOWING, 300, 0), 1.0F).effect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300, 0), 1.0F).build()))),
+            BUG_FLESH = ITEMS.register("bug_flesh", () -> new BugFlesh(new Item.Properties().tab(NCH_MISC_ITEMS).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).build()))),
 
     // NCH_INDUSTRIAL_ITEMS
-    RAW_BLACK_TUNGSTEN = ITEMS.register("raw_black_tungsten", () -> new RawBlackTungsten(new Item.Properties().tab(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS))),
-            BLACK_TUNGSTEN_INGOT = ITEMS.register("black_tungsten_ingot", () -> new BlackTungstenIngot(new Item.Properties().tab(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS))),
-            BLACK_TUNGSTEN_NUGGET = ITEMS.register("black_tungsten_nugget", () -> new BlackTungstenNugget(new Item.Properties().tab(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS))),
-            BLACK_TUNGSTEN_DUST = ITEMS.register("black_tungsten_dust", () -> new BlackTungstenDust(new Item.Properties().tab(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS)));
+    RAW_BLACK_TUNGSTEN = ITEMS.register("raw_black_tungsten", () -> new RawBlackTungsten(new Item.Properties().tab(NCH_INDUSTRIAL_ITEMS))),
+            BLACK_TUNGSTEN_INGOT = ITEMS.register("black_tungsten_ingot", () -> new BlackTungstenIngot(new Item.Properties().tab(NCH_INDUSTRIAL_ITEMS))),
+            BLACK_TUNGSTEN_NUGGET = ITEMS.register("black_tungsten_nugget", () -> new BlackTungstenNugget(new Item.Properties().tab(NCH_INDUSTRIAL_ITEMS))),
+            BLACK_TUNGSTEN_DUST = ITEMS.register("black_tungsten_dust", () -> new BlackTungstenDust(new Item.Properties().tab(NCH_INDUSTRIAL_ITEMS)));
 
+    public static final RegistryObject<Item> WHITE_BUD_LEAVES = block(NchBlocks.WHITE_BUD_BUSH, "white_bud_leaves", NCH_MISC_ITEMS);
+    public static final RegistryObject<Item> COSMIC_SAND = block(NchBlocks.COSMIC_SAND, NCH_WORLD);
+    public static final RegistryObject<Item> COSMIC_SANDSTONE = block(NchBlocks.COSMIC_SANDSTONE, NCH_WORLD);
+    public static final RegistryObject<Item> SILVERBLANC_STONE = block(NchBlocks.SILVERBLANC_STONE, NCH_WORLD);
+    public static final RegistryObject<Item> MOSS_SILVERBLANC_STONE = block(NchBlocks.MOSS_SILVERBLANC_STONE, NCH_WORLD);
+    public static final RegistryObject<Item> SILVERBLANC_STONE_BRICKS = block(NchBlocks.SILVERBLANC_STONE_BRICKS, NCH_WORLD);
+    public static final RegistryObject<Item> CHISELED_SILVERBLANC_STONE_BRICKS = block(NchBlocks.CHISELED_SILVERBLANC_STONE_BRICKS, NCH_WORLD);
+    public static final RegistryObject<Item> SILVERBLANC_IRON_ORE = block(NchBlocks.SILVERBLANC_IRON_ORE, NCH_WORLD);
+    public static final RegistryObject<Item> SILVERBLANC_GOLD_ORE = block(NchBlocks.SILVERBLANC_GOLD_ORE, NCH_WORLD);
+    public static final RegistryObject<Item> SILVERBLANC_BLACK_TUNGSTEN_ORE = block(NchBlocks.SILVERBLANC_BLACK_TUNGSTEN_ORE, NCH_WORLD);
+    public static final RegistryObject<Item> SILVERBLANC_BEDROCK_DIAMOND_ORE = block(NchBlocks.SILVERBLANC_BEDROCK_DIAMOND_ORE, NCH_WORLD);
+    public static final RegistryObject<Item> WHITE_BUD = block(NchBlocks.WHITE_BUD, NCH_WORLD);
 
+    private static <T extends Block> RegistryObject<Item> block(RegistryObject<T> block, CreativeModeTab tab) {
+        return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+    }
+
+    private static <T extends Block> RegistryObject<Item> block(RegistryObject<T> block, String id, CreativeModeTab tab) {
+        return ITEMS.register(id, () -> new ItemNameBlockItem(block.get(), new Item.Properties().tab(tab)));
+    }
 }

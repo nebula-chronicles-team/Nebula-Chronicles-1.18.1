@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "nch:cosmic_sandstone",
+    "nch:silverblanc_stone",
+    "nch:moss_silverblanc_stone",
+    "nch:silverblanc_stone_bricks",
+    "nch:chiseled_silverblanc_stone_bricks",
+    "nch:silverblanc_iron_ore",
+    "nch:silverblanc_gold_ore",
+    "nch:silverblanc_black_tungsten_ore",
+    "nch:silverblanc_bedrock_diamond_ore"
+  ]
+}
