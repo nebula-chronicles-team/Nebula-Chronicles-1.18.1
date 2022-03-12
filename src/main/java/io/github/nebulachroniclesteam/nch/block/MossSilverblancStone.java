@@ -13,9 +13,6 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
-// todo by lq2007
-//   change block to NchBlocks.SILVERBLANC_STONE
-//   grow crops and trees
 public class MossSilverblancStone extends Block {
 
     public MossSilverblancStone() {
@@ -28,12 +25,24 @@ public class MossSilverblancStone extends Block {
     @Override
     public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
         super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
-        System.out.println("pState=" + pState + ", pPos=" + pPos + ", pBlock=" + pBlock + ", pFrom=" + pFromPos + ", pMoving=" + pIsMoving);
+        if (!pIsMoving) {
+            BlockPos above = pPos.above();
+            BlockState bs = pLevel.getBlockState(above);
+            if (!bs.is(NchBlocks.SILVERBLANC_STONE.get()) && !bs.isAir() && !bs.hasBlockEntity() && bs.canOcclude() && bs.isCollisionShapeFullBlock(pLevel, pPos)) {
+                System.out.println(bs);
+                pLevel.setBlock(above, NchBlocks.SILVERBLANC_STONE.get().defaultBlockState(), 2);
+            }
+        }
     }
 
     @Override
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
         PlantType plantType = plantable.getPlantType(world, pos.relative(facing));
         return !(PlantType.WATER.equals(plantType));
+    }
+
+    @Override
+    public boolean isFertile(BlockState state, BlockGetter world, BlockPos pos) {
+        return true;
     }
 }

@@ -17,8 +17,8 @@ public class GenEventHandler {
 
         NchBlockTagsProvider bp;
 
-        generator.addProvider(new NchItemModelProvider(generator, existingFileHelper));
         generator.addProvider(new NchBlockStateProvider(generator, existingFileHelper));
+        generator.addProvider(new NchItemModelProvider(generator, existingFileHelper));
         generator.addProvider(new NchLangProviderEn(generator));
         generator.addProvider(new NchLangProviderZh(generator));
         generator.addProvider(bp = new NchBlockTagsProvider(generator, existingFileHelper));
