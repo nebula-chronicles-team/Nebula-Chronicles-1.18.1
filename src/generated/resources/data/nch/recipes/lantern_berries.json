@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "food",
+  "ingredients": [
+    {
+      "item": "nch:lantern_berries_plant"
+    }
+  ],
+  "result": {
+    "item": "nch:lantern_berries"
+  }
+}

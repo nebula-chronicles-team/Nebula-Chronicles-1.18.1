@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "nch:coarse_cactus",
+    "nch:coarse_cactus_planks",
+    "nch:coarse_cactus_stairs",
+    "nch:coarse_cactus_slabs",
+    "nch:coarse_cactus_fence",
+    "nch:coarse_cactus_fence_gate",
+    "nch:coarse_cactus_trapdoor",
+    "nch:coarse_cactus_door"
+  ]
+}

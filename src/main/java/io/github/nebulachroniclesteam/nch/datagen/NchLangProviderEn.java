@@ -39,7 +39,6 @@ public class NchLangProviderEn extends LanguageProvider {
         addItem(NchItems.BLACK_TUNGSTEN_DUST);
         addItem(NchItems.BLACK_TUNGSTEN_INGOT);
         addItem(NchItems.BLACK_TUNGSTEN_NUGGET);
-
         addBlock(NchBlocks.WHITE_BUD_BUSH, "White Bud");
         addBlock(NchBlocks.COSMIC_SAND);
         addBlock(NchBlocks.COSMIC_SANDSTONE);
@@ -52,6 +51,29 @@ public class NchLangProviderEn extends LanguageProvider {
         addBlock(NchBlocks.SILVERBLANC_BLACK_TUNGSTEN_ORE);
         addBlock(NchBlocks.SILVERBLANC_BEDROCK_DIAMOND_ORE);
         addBlock(NchBlocks.WHITE_BUD);
+        addBlock(NchBlocks.WHITE_BUD_LEAF_BLOCK);
+        addBlock(NchBlocks.STRANGE_FERN);
+        addBlock(NchBlocks.LANTERN_BERRIES_PLANT);
+        addBlock(NchBlocks.COARSE_CACTUS);
+        addBlock(NchBlocks.COARSE_CACTUS_PLANKS);
+        addBlock(NchBlocks.COARSE_CACTUS_STAIRS);
+        addBlock(NchBlocks.COARSE_CACTUS_SLABS);
+        addBlock(NchBlocks.COARSE_CACTUS_FENCE);
+        addBlock(NchBlocks.COARSE_CACTUS_FENCE_GATE);
+        addBlock(NchBlocks.COARSE_CACTUS_TRAPDOOR);
+        addBlock(NchBlocks.COARSE_CACTUS_DOOR);
+        addBlock(NchBlocks.BLUE_KODOKU_FLOWER);
+        addBlock(NchBlocks.PURPLE_KODOKU_FLOWER);
+        addBlock(NchBlocks.WHITE_KODOKU_FLOWER);
+        addBlock(NchBlocks.POTTED_BLUE_KODOKU_FLOWER);
+        addBlock(NchBlocks.POTTED_PURPLE_KODOKU_FLOWER);
+        addBlock(NchBlocks.POTTED_WHITE_KODOKU_FLOWER);
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK);
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_IRON_ORE);
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_GOLD_ORE);
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_BLACK_TUNGSTEN_ORE);
+        addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS_STAIRS);
+        addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS_SLAB);
     }
 
     private void addGroup(CreativeModeTab tab, String name) {

@@ -32,7 +32,6 @@ public class NchLangProviderZh extends LanguageProvider {
         addItem(NchItems.BLACK_TUNGSTEN_DUST, "青钨粉");
         addItem(NchItems.BLACK_TUNGSTEN_INGOT, "青钨锭");
         addItem(NchItems.BLACK_TUNGSTEN_NUGGET, "青钨粒");
-
         addBlock(NchBlocks.WHITE_BUD_BUSH, "白芽灌木");
         addBlock(NchBlocks.COSMIC_SAND, "太空砂");
         addBlock(NchBlocks.COSMIC_SANDSTONE, "太空砂岩");
@@ -45,6 +44,29 @@ public class NchLangProviderZh extends LanguageProvider {
         addBlock(NchBlocks.SILVERBLANC_BLACK_TUNGSTEN_ORE, "银白青钨矿");
         addBlock(NchBlocks.SILVERBLANC_BEDROCK_DIAMOND_ORE, "银白基岩钻石矿");
         addBlock(NchBlocks.WHITE_BUD, "白芽");
+        addBlock(NchBlocks.WHITE_BUD_LEAF_BLOCK, "白芽叶片块");
+        addBlock(NchBlocks.STRANGE_FERN, "奇异蕨");
+        addBlock(NchBlocks.LANTERN_BERRIES_PLANT, "灯笼浆果");
+        addBlock(NchBlocks.COARSE_CACTUS, "太空仙人掌");
+        addBlock(NchBlocks.COARSE_CACTUS_PLANKS, "太空仙人掌木板");
+        addBlock(NchBlocks.COARSE_CACTUS_STAIRS, "太空仙人掌楼梯");
+        addBlock(NchBlocks.COARSE_CACTUS_SLABS, "太空仙人掌台阶");
+        addBlock(NchBlocks.COARSE_CACTUS_FENCE, "太空仙人掌栅栏");
+        addBlock(NchBlocks.COARSE_CACTUS_FENCE_GATE, "太空仙人掌栅栏门");
+        addBlock(NchBlocks.COARSE_CACTUS_TRAPDOOR, "太空仙人掌活板门");
+        addBlock(NchBlocks.COARSE_CACTUS_DOOR, "太空仙人掌门");
+        addBlock(NchBlocks.BLUE_KODOKU_FLOWER, "蓝色孤独花");
+        addBlock(NchBlocks.PURPLE_KODOKU_FLOWER, "紫色孤独花");
+        addBlock(NchBlocks.WHITE_KODOKU_FLOWER, "白色孤独花");
+        addBlock(NchBlocks.POTTED_BLUE_KODOKU_FLOWER, "蓝色孤独花盆栽");
+        addBlock(NchBlocks.POTTED_PURPLE_KODOKU_FLOWER, "紫色孤独花盆栽");
+        addBlock(NchBlocks.POTTED_WHITE_KODOKU_FLOWER, "白色孤独花盆栽");
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK, "银白基岩");
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_IRON_ORE, "银白基岩铁矿");
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_GOLD_ORE, "银白基岩金矿");
+        addBlock(NchBlocks.SILVERBLANC_BEDROCK_BLACK_TUNGSTEN_ORE, "银白基岩青钨矿");
+        addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS_STAIRS, "银白石砖楼梯");
+        addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS_SLAB, "银白石砖台阶");
     }
 
     private void addGroup(CreativeModeTab tab, String name) {

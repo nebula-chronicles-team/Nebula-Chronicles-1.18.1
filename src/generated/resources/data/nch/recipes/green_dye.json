@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "dye",
+  "ingredients": [
+    {
+      "item": "nch:strange_fern"
+    }
+  ],
+  "result": {
+    "item": "minecraft:green_dye"
+  }
+}

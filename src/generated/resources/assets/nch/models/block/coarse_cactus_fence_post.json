@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "nch:block/coarse_cactus_planks"
+  }
+}

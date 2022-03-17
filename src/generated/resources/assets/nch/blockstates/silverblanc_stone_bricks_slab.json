@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "nch:block/silverblanc_stone_bricks_slab_top"
+    },
+    "type=bottom": {
+      "model": "nch:block/silverblanc_stone_bricks_slab"
+    },
+    "type=double": {
+      "model": "nch:block/silverblanc_stone_bricks"
+    }
+  }
+}

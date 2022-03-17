@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "nch:block/coarse_cactus_slabs_top"
+    },
+    "type=bottom": {
+      "model": "nch:block/coarse_cactus_slabs"
+    },
+    "type=double": {
+      "model": "nch:block/coarse_cactus_planks"
+    }
+  }
+}

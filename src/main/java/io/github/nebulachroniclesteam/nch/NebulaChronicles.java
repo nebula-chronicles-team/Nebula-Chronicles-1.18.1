@@ -1,7 +1,9 @@
 package io.github.nebulachroniclesteam.nch;
 
+import io.github.nebulachroniclesteam.nch.register.NchBlockEntities;
 import io.github.nebulachroniclesteam.nch.register.NchBlocks;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -11,8 +13,9 @@ public class NebulaChronicles {
 
     // register
     public NebulaChronicles() {
-        NchBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        NchItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        NchBlocks.BLOCKS.register(bus);
+        NchItems.ITEMS.register(bus);
+        NchBlockEntities.BLOCK_ENTITIES.register(bus);
     }
-
 }

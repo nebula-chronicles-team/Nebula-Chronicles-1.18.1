@@ -24,5 +24,6 @@ public class GenEventHandler {
         generator.addProvider(bp = new NchBlockTagsProvider(generator, existingFileHelper));
         generator.addProvider(new NchItemTagsProvider(generator, bp, existingFileHelper));
         generator.addProvider(new NchLootProvider(generator));
+        generator.addProvider(new NchRecipeProvider(generator));
     }
 }

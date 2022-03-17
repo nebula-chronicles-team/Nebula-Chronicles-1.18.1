@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "nch:coarse_cactus"
+    }
+  ],
+  "result": {
+    "item": "nch:coarse_cactus_planks",
+    "count": 4
+  }
+}

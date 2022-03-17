@@ -1,0 +1,6 @@
+{
+  "parent": "nch:block/white_bud",
+  "textures": {
+    "layer0": "nch:block/white_bud"
+  }
+}

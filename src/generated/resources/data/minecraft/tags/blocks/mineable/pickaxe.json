@@ -9,6 +9,12 @@
     "nch:silverblanc_iron_ore",
     "nch:silverblanc_gold_ore",
     "nch:silverblanc_black_tungsten_ore",
-    "nch:silverblanc_bedrock_diamond_ore"
+    "nch:silverblanc_bedrock_diamond_ore",
+    "nch:silverblanc_bedrock",
+    "nch:silverblanc_bedrock_iron_ore",
+    "nch:silverblanc_bedrock_gold_ore",
+    "nch:silverblanc_bedrock_black_tungsten_ore",
+    "nch:silverblanc_stone_bricks_stair",
+    "nch:silverblanc_stone_bricks_slab"
   ]
 }

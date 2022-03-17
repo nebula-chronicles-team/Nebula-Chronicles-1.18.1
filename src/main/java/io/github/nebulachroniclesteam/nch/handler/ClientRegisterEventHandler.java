@@ -23,6 +23,17 @@ public class ClientRegisterEventHandler {
     public static void onRegisterBlockRenderType(ModelRegistryEvent event) {
         ItemBlockRenderTypes.setRenderLayer(NchBlocks.WHITE_BUD_BUSH.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(NchBlocks.WHITE_BUD.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.STRANGE_FERN.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.LANTERN_BERRIES_PLANT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.COARSE_CACTUS.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.COARSE_CACTUS_TRAPDOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.COARSE_CACTUS_DOOR.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.BLUE_KODOKU_FLOWER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.PURPLE_KODOKU_FLOWER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.WHITE_KODOKU_FLOWER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.POTTED_BLUE_KODOKU_FLOWER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.POTTED_PURPLE_KODOKU_FLOWER.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(NchBlocks.POTTED_WHITE_KODOKU_FLOWER.get(), RenderType.cutout());
     }
 
     @SubscribeEvent
