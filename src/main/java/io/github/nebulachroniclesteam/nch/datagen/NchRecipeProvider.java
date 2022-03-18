@@ -5,7 +5,6 @@ import io.github.nebulachroniclesteam.nch.register.NchBlocks;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.critereon.EnterBlockTrigger;
-import net.minecraft.core.Registry;
 import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.DataGenerator;
@@ -34,6 +33,7 @@ public class NchRecipeProvider extends RecipeProvider {
 
     private Map<BlockFamily.Variant, BiFunction<ItemLike, ItemLike, RecipeBuilder>> shapeBuilders = Collections.emptyMap();
 
+    @SuppressWarnings("unchecked")
     public NchRecipeProvider(DataGenerator pGenerator) {
         super(pGenerator);
         for (Field field : RecipeProvider.class.getDeclaredFields()) {
@@ -114,13 +114,13 @@ public class NchRecipeProvider extends RecipeProvider {
                 family.getRecipeGroupPrefix().ifPresent((s) ->
                         recipebuilder.group(s + (variant == BlockFamily.Variant.CUT ? "" : "_" + variant.getName())));
                 recipebuilder.unlockedBy(family.getRecipeUnlockedBy()
-                        .orElseGet(() -> "has_" + Registry.ITEM.getKey(itemlike.asItem()).getPath()), has(itemlike));
+                        .orElseGet(() -> "has_" + itemlike.asItem().delegate.name().getPath()), has(itemlike));
                 recipebuilder.save(consumer);
             }
 
             if (variant == BlockFamily.Variant.CRACKED) {
                 SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemlike), block, 0.1F, 200)
-                        .unlockedBy("has_" + Registry.ITEM.getKey(itemlike.asItem()).getPath(), has(itemlike))
+                        .unlockedBy("has_" + itemlike.asItem().delegate.name().getPath(), has(itemlike))
                         .save(consumer);
             }
 
