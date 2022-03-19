@@ -119,8 +119,8 @@ public class CoarseCactusBlockEntity extends BlockEntity {
     public boolean nextAge() {
         boolean grow = false;
         if (level != null && age <= MAX_AGE && canGrow()) {
-            if (wait == 0 || true) { // todo by lq2007: debug flag
-                if (level.random.nextFloat() <= 0.1 || true) { // todo by lq2007: debug flag
+            if (wait == 0) {
+                if (level.random.nextFloat() <= 0.1) {
                     age++;
                     grow = true;
                 }
