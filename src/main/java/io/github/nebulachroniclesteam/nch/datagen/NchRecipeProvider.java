@@ -18,12 +18,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Collections;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -31,27 +25,13 @@ import java.util.function.Function;
 
 public class NchRecipeProvider extends RecipeProvider {
 
-    private Map<BlockFamily.Variant, BiFunction<ItemLike, ItemLike, RecipeBuilder>> shapeBuilders = Collections.emptyMap();
-
-    @SuppressWarnings("unchecked")
     public NchRecipeProvider(DataGenerator pGenerator) {
         super(pGenerator);
-        for (Field field : RecipeProvider.class.getDeclaredFields()) {
-            if (Modifier.isStatic(field.getModifiers()) && Map.class.isAssignableFrom(field.getType())) {
-                field.setAccessible(true);
-                try {
-                    shapeBuilders = (Map<BlockFamily.Variant, BiFunction<ItemLike, ItemLike, RecipeBuilder>>) field.get(null);
-                    break;
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
     }
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-        generateRecipes(pFinishedRecipeConsumer, addBlockFamily(NchBlocks.COARSE_CACTUS_PLANKS.get())
+        generateRecipes(pFinishedRecipeConsumer, BlockFamilies.familyBuilder(NchBlocks.COARSE_CACTUS_PLANKS.get())
                 .fence(NchBlocks.COARSE_CACTUS_FENCE.get())
                 .fenceGate(NchBlocks.COARSE_CACTUS_FENCE_GATE.get())
                 .slab(NchBlocks.COARSE_CACTUS_SLABS.get())
@@ -66,7 +46,7 @@ public class NchRecipeProvider extends RecipeProvider {
                 .dontGenerateModel()
                 .recipeGroupPrefix("wooden")
                 .recipeUnlockedBy("has_planks"));
-        generateRecipes(pFinishedRecipeConsumer, addBlockFamily(NchBlocks.SILVERBLANC_STONE_BRICKS.get())
+        generateRecipes(pFinishedRecipeConsumer, BlockFamilies.familyBuilder(NchBlocks.SILVERBLANC_STONE_BRICKS.get())
                 .stairs(NchBlocks.SILVERBLANC_STONE_BRICKS_STAIRS.get())
                 .slab(NchBlocks.SILVERBLANC_STONE_BRICKS_SLAB.get())
                 .dontGenerateModel()
@@ -137,24 +117,6 @@ public class NchRecipeProvider extends RecipeProvider {
         } else {
             return pFamily.getBaseBlock();
         }
-    }
-
-    private BlockFamily.Builder addBlockFamily(Block block) {
-        for (Method method : BlockFamilies.class.getDeclaredMethods()) {
-            // function like BlockFamily.Builder xxx(Block);
-            if (Modifier.isStatic(method.getModifiers())
-                    && method.getReturnType() == BlockFamily.Builder.class
-                    && method.getParameterCount() == 1
-                    && method.getParameterTypes()[0] == Block.class) {
-                method.setAccessible(true);
-                try {
-                    return (BlockFamily.Builder) method.invoke(null, block);
-                } catch (InvocationTargetException | IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        throw new RuntimeException("Not found method like BlockFamily.Builder xxx(Block);");
     }
 
     record RenamedRecipeBuilder(RecipeBuilder builder,

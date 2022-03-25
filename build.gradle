@@ -25,6 +25,8 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
     mappings channel: channel, version: channel_version
+    accessTransformer = file('src/main/resources/META-INF/nch_at.cfg')
+
     runs {
         client {
             workingDirectory project.file('run')
@@ -69,6 +71,10 @@ repositories {
     maven { url 'https://www.cursemaven.com' }
     maven { url 'https://repo.maven.apache.org/maven2' }
     maven { url 'https://dvs1.progwml6.com/files/maven' }
+    maven {
+        url 'https://cursemaven.com'
+        content { includeGroup "curse.maven" }
+    }
 }
 
 dependencies {
@@ -76,6 +82,7 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    implementation fg.deobf("curse.maven:scannable-266784:3551507")
 }
 
 jar {

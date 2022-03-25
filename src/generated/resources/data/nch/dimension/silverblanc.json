@@ -1,0 +1,12 @@
+{
+  "type": "nch:silverblanc",
+  "generator": {
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "nch:silverblanc"
+    },
+    "seed": 0,
+    "type": "minecraft:noise",
+    "settings": "nch:silverblanc"
+  }
+}
