@@ -15,6 +15,10 @@ public class NchItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, NebulaChronicles.MOD_ID);
 
+    static {
+        NchBlockItems.load();
+    }
+
     public static final RegistryObject<Item> // NCH_MISC_ITEMS
     // NCH_INDUSTRIAL_ITEMS
     // NCH_INDUSTRIAL_ITEMS

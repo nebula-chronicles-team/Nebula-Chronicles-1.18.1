@@ -56,4 +56,7 @@ public class NchBlockItems {
         return ITEMS.register(id, () -> new ItemNameBlockItem(block.get(), new Item.Properties().tab(tab)));
     }
 
+    public static void load() {
+        // do nothing
+    }
 }
