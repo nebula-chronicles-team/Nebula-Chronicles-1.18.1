@@ -9,7 +9,7 @@ public class NchCreativeModeTab {
 
     public static final CreativeModeTab NCH_MISC_ITEMS = new CreativeModeTab(getLabel("nch_misc_items")) {
         public ItemStack makeIcon() {
-            return new ItemStack(NchItems.WHITE_BUD_LEAVES.get());
+            return new ItemStack(NchBlockItems.WHITE_BUD_LEAVES.get());
         }
     };
 

@@ -13,6 +13,7 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'   // Parchment mappings.
         classpath "io.github.luiqn2007.gradle_plugins:UselessGradlePlugin:1.2.6"
+        classpath group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -90,6 +91,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     implementation fg.deobf("curse.maven:scannable-266784:3551507")
     compileOnly 'in.lq2007:UselessPluginLib:1.2.0'
+    compileOnly group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
 }
 
 jar {

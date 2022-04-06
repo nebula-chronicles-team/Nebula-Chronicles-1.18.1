@@ -1,6 +1,7 @@
 package io.github.nebulachroniclesteam.nch.datagen;
 
 import io.github.nebulachroniclesteam.nch.NebulaChronicles;
+import io.github.nebulachroniclesteam.nch.register.NchBlockItems;
 import io.github.nebulachroniclesteam.nch.register.NchBlocks;
 import io.github.nebulachroniclesteam.nch.register.NchCreativeModeTab;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
@@ -11,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
-
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -28,13 +28,10 @@ public class NchLangProviderEn extends LanguageProvider {
         addGroup(NchCreativeModeTab.NCH_MISC_ITEMS, "Nebula Chronicles - Misc");
         addGroup(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS, "Nebula Chronicles - Industrial Items");
         addGroup(NchCreativeModeTab.NCH_INDUSTRIAL_BLOCKS, "Nebula Chronicles - Industrial Blocks");
-
         addItem(NchItems.BUG_FLESH);
         addItem(NchItems.WHITE_BUD_STEW);
-        addItem(NchItems.WHITE_BUD_LEAVES);
+        addItem(NchBlockItems.WHITE_BUD_LEAVES);
         addItem(NchItems.LANTERN_BERRIES);
-//        addItem(NchItems.RAW_IRON, "Raw Iron");
-//        addItem(NchItems.RAW_Gold, "Raw Gold");
         addItem(NchItems.RAW_BLACK_TUNGSTEN);
         addItem(NchItems.BLACK_TUNGSTEN_DUST);
         addItem(NchItems.BLACK_TUNGSTEN_INGOT);
@@ -74,6 +71,33 @@ public class NchLangProviderEn extends LanguageProvider {
         addBlock(NchBlocks.SILVERBLANC_BEDROCK_BLACK_TUNGSTEN_ORE);
         addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS_STAIRS);
         addBlock(NchBlocks.SILVERBLANC_STONE_BRICKS_SLAB);
+        addItem(NchItems.NETHERITE_PLATE);
+        addItem(NchItems.THULIUM_188_INGOT);
+        addItem(NchItems.ADAMANTINE_DUST);
+        addItem(NchItems.RAW_ZOGA);
+        addItem(NchItems.ZOGA_DUST);
+        addItem(NchItems.BYTE_NUGGET);
+        addItem(NchItems.RAW_ZOGA_BLOCK);
+        addItem(NchItems.BLACK_TUNGSTEN_PLATE);
+        addItem(NchItems.BYTE);
+        addItem(NchItems.ZOGA_NUGGET);
+        addItem(NchItems.BYTE_DUST);
+        addItem(NchItems.FLOURESCIUM_NUGGET);
+        addItem(NchItems.IRON_PLATE);
+        addItem(NchItems.FLOURESCIUM_DUST);
+        addItem(NchItems.ADAMANTINE_NUGGET);
+        addItem(NchItems.ADAMANTINE_PLATE);
+        addItem(NchItems.FLOURESCIUM_INGOT);
+        addItem(NchItems.THULIUM_188_PLATE);
+        addItem(NchItems.THULIUM_188_NUGGET);
+        addItem(NchItems.RAW_FLOURESCIUM);
+        addItem(NchItems.ZOGA_INGOT);
+        addItem(NchItems.COPPER_PLATE);
+        addItem(NchItems.GOLD_PLATE);
+        addItem(NchItems.ADAMANTINE);
+        addItem(NchItems.THULIUM_188_DUST);
+        addItem(NchItems.ZOGA_PLATE);
+        addItem(NchItems.RAW_BYTE);
     }
 
     private void addGroup(CreativeModeTab tab, String name) {
@@ -89,8 +113,6 @@ public class NchLangProviderEn extends LanguageProvider {
     }
 
     private String nameFromId(String id) {
-        return Arrays.stream(id.split("_"))
-                .map(s -> s.charAt(0) + s.substring(1).toLowerCase(Locale.ROOT))
-                .collect(Collectors.joining(" "));
+        return Arrays.stream(id.split("_")).map(s -> s.charAt(0) + s.substring(1).toLowerCase(Locale.ROOT)).collect(Collectors.joining(" "));
     }
 }

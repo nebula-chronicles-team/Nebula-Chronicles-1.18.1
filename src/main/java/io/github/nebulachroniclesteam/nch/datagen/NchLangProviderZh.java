@@ -1,6 +1,7 @@
 package io.github.nebulachroniclesteam.nch.datagen;
 
 import io.github.nebulachroniclesteam.nch.NebulaChronicles;
+import io.github.nebulachroniclesteam.nch.register.NchBlockItems;
 import io.github.nebulachroniclesteam.nch.register.NchBlocks;
 import io.github.nebulachroniclesteam.nch.register.NchCreativeModeTab;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
@@ -21,13 +22,10 @@ public class NchLangProviderZh extends LanguageProvider {
         addGroup(NchCreativeModeTab.NCH_MISC_ITEMS, "星云纪事 - 杂项");
         addGroup(NchCreativeModeTab.NCH_INDUSTRIAL_ITEMS, "星云纪事 - 工业物品");
         addGroup(NchCreativeModeTab.NCH_INDUSTRIAL_BLOCKS, "星云纪事 - 工业方块");
-
         addItem(NchItems.BUG_FLESH, "虫肉");
         addItem(NchItems.WHITE_BUD_STEW, "白芽炖");
-        addItem(NchItems.WHITE_BUD_LEAVES, "白芽叶片");
+        addItem(NchBlockItems.WHITE_BUD_LEAVES, "白芽叶片");
         addItem(NchItems.LANTERN_BERRIES, "灯笼浆果");
-//        addItem(NchItems.RAW_IRON, "Raw Iron");
-//        addItem(NchItems.RAW_Gold, "Raw Gold");
         addItem(NchItems.RAW_BLACK_TUNGSTEN, "粗青钨");
         addItem(NchItems.BLACK_TUNGSTEN_DUST, "青钨粉");
         addItem(NchItems.BLACK_TUNGSTEN_INGOT, "青钨锭");

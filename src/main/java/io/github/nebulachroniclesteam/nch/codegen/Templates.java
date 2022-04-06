@@ -3,6 +3,8 @@ package io.github.nebulachroniclesteam.nch.codegen;
 import com.github.javaparser_new.StaticJavaParser;
 import com.github.javaparser_new.ast.ImportDeclaration;
 import com.github.javaparser_new.ast.body.BodyDeclaration;
+import com.github.javaparser_new.ast.expr.Expression;
+import com.github.javaparser_new.ast.stmt.Statement;
 
 public class Templates {
 
@@ -29,5 +31,13 @@ public class Templates {
 
     private static BodyDeclaration<?> body(String code, String... params) {
         return StaticJavaParser.parseBodyDeclaration(String.format(code, (Object[]) params));
+    }
+
+    public static Statement stmt(String code, String... params) {
+        return StaticJavaParser.parseStatement(String.format(code, (Object[]) params));
+    }
+
+    public static Expression exp(String code, String... params) {
+        return StaticJavaParser.parseExpression(String.format(code, (Object[]) params));
     }
 }

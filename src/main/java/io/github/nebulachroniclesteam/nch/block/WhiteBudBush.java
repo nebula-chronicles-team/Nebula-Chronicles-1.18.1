@@ -2,7 +2,7 @@ package io.github.nebulachroniclesteam.nch.block;
 
 
 import io.github.nebulachroniclesteam.nch.item.NchItemTags;
-import io.github.nebulachroniclesteam.nch.register.NchItems;
+import io.github.nebulachroniclesteam.nch.register.NchBlockItems;
 import io.github.nebulachroniclesteam.nch.util.ILootableBlock;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -74,7 +74,7 @@ public class WhiteBudBush extends BushBlock implements BonemealableBlock, ILoota
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
-        return new ItemStack(NchItems.WHITE_BUD_LEAVES.get());
+        return new ItemStack(NchBlockItems.WHITE_BUD_LEAVES.get());
     }
 
     @Override
@@ -100,7 +100,7 @@ public class WhiteBudBush extends BushBlock implements BonemealableBlock, ILoota
             ItemStack itemInHand = pPlayer.getItemInHand(pHand);
             if (isMaxAge(pState)) {
                 if (itemInHand.is(NchItemTags.AXES)) {
-                    popResource(pLevel, pPos, new ItemStack(NchItems.WHITE_BUD_LEAVES.get()));
+                    popResource(pLevel, pPos, new ItemStack(NchBlockItems.WHITE_BUD_LEAVES.get()));
                     itemInHand.hurt(1, pLevel.random, sp);
                     float pitch = 0.8f + pLevel.random.nextFloat() * 4;
                     pLevel.playSound(null, pPos, SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1, pitch);
