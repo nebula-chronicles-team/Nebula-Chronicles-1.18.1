@@ -107,7 +107,7 @@ public class NchRecipeProvider extends RecipeProvider {
         });
     }
 
-    private static Block getBaseBlock(BlockFamily pFamily, BlockFamily.Variant pVariant) {
+    public static Block getBaseBlock(BlockFamily pFamily, BlockFamily.Variant pVariant) {
         if (pVariant == BlockFamily.Variant.CHISELED) {
             if (!pFamily.getVariants().containsKey(BlockFamily.Variant.SLAB)) {
                 throw new IllegalStateException("Slab is not defined for the family.");
@@ -149,8 +149,12 @@ public class NchRecipeProvider extends RecipeProvider {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj == this) return true;
-            if (obj == null || obj.getClass() != this.getClass()) return false;
+            if (obj == this) {
+                return true;
+            }
+            if (obj == null || obj.getClass() != this.getClass()) {
+                return false;
+            }
             var that = (RenamedRecipeBuilder) obj;
             return Objects.equals(this.builder, that.builder);
         }

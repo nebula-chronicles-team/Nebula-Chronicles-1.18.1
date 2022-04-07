@@ -1,17 +1,13 @@
 package io.github.nebulachroniclesteam.nch.register;
 
-import com.mojang.math.Vector3f;
 import io.github.nebulachroniclesteam.nch.NebulaChronicles;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.data.worldgen.Carvers;
-import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -44,13 +40,13 @@ public class NchBiomes {
                     .addFeature(GenerationStep.Decoration.UNDERGROUND_STRUCTURES, NchFeatures.SILVERBLANC_MONSTER_ROOM)
                     .addFeature(GenerationStep.Decoration.UNDERGROUND_STRUCTURES, NchFeatures.SILVERBLANC_MONSTER_ROOM_DEEP)
                     .addFeature(GenerationStep.Decoration.FLUID_SPRINGS, MiscOverworldPlacements.SPRING_WATER)
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_IRON.get().build())
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_GOLD.get().build())
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_TUNGSTEN.get().build())
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_IRON_BEDROCK.get().build())
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_GOLD_BEDROCK.get().build())
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_DIAMOND_BEDROCK.get().build())
-                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_TUNGSTEN_BEDROCK.get().build())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_IRON.get())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_GOLD.get())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_TUNGSTEN.get())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_IRON_BEDROCK.get())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_GOLD_BEDROCK.get())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_DIAMOND_BEDROCK.get())
+                    .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, NchFeatures.ORE_SILVERBLANC_TUNGSTEN_BEDROCK.get())
                     .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE)
                     .addCarver(GenerationStep.Carving.AIR, Carvers.CAVE_EXTRA_UNDERGROUND)
                     .addCarver(GenerationStep.Carving.AIR, Carvers.CANYON)

@@ -2,7 +2,6 @@ package io.github.nebulachroniclesteam.nch.datagen;
 
 import io.github.nebulachroniclesteam.nch.NebulaChronicles;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.info.WorldgenRegistryDumpReport;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,7 +25,7 @@ public class GenEventHandler {
         generator.addProvider(new NchItemTagsProvider(generator, bp, existingFileHelper));
         generator.addProvider(new NchLootProvider(generator));
         generator.addProvider(new NchRecipeProvider(generator));
-        generator.addProvider(new NchDimensionProvider(generator));
+        //generator.addProvider(new NchDimensionProvider(generator));
 
         // dump all default world-gen json
         // generator.addProvider(new WorldgenRegistryDumpReport(generator));
