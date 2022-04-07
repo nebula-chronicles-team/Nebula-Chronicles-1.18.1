@@ -1,6 +1,7 @@
 package io.github.nebulachroniclesteam.nch.datagen;
 
 import io.github.nebulachroniclesteam.nch.NebulaChronicles;
+import io.github.nebulachroniclesteam.nch.register.NchBlockItems;
 import io.github.nebulachroniclesteam.nch.register.NchBlocks;
 import io.github.nebulachroniclesteam.nch.register.NchItems;
 import net.minecraft.data.DataGenerator;
@@ -22,9 +23,9 @@ public class NchItemModelProvider extends ItemModelProvider {
         item(NchItems.BUG_FLESH);
         item(NchItems.LANTERN_BERRIES);
         item(NchItems.WHITE_BUD_STEW);
-        item(NchItems.WHITE_BUD_LEAVES);
-        itemBlock(NchItems.WHITE_BUD);
-        block(NchItems.WHITE_BUD);
+        item(NchBlockItems.WHITE_BUD_LEAVES);
+        itemBlock(NchBlockItems.WHITE_BUD);
+        block(NchBlockItems.WHITE_BUD);
         metal(NchItems.RAW_BLACK_TUNGSTEN);
         metal(NchItems.BLACK_TUNGSTEN_DUST);
         metal(NchItems.BLACK_TUNGSTEN_INGOT);
@@ -41,7 +42,7 @@ public class NchItemModelProvider extends ItemModelProvider {
         block(NchBlocks.SILVERBLANC_BEDROCK_DIAMOND_ORE);
         block(NchBlocks.WHITE_BUD_LEAF_BLOCK);
         block(NchBlocks.STRANGE_FERN);
-        itemBlock(NchItems.LANTERN_BERRIES_PLANT);
+        itemBlock(NchBlockItems.LANTERN_BERRIES_PLANT);
         item(NchBlocks.COARSE_CACTUS);
         block(NchBlocks.COARSE_CACTUS_PLANKS);
         block(NchBlocks.COARSE_CACTUS_STAIRS);

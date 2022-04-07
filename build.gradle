@@ -8,17 +8,21 @@ buildscript {
 
         maven { url 'https://maven.parchmentmc.org' }
         maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url 'https://jitpack.io' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'   // Parchment mappings.
+        classpath "io.github.luiqn2007.gradle_plugins:UselessGradlePlugin:1.2.6"
+        classpath group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'   // Parchment mappings.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: "io.github.luiqn2007.gradle_plugins.build_tasks"
 
 version = mod_version
 group = maven_group
@@ -79,6 +83,7 @@ repositories {
         url 'https://cursemaven.com'
         content { includeGroup "curse.maven" }
     }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -87,6 +92,8 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     //implementation fg.deobf("curse.maven:scannable-266784:3551507")
+    compileOnly 'in.lq2007:UselessPluginLib:1.2.0'
+    compileOnly group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
 }
 
 jar {
@@ -105,6 +112,10 @@ jar {
 
 jar.finalizedBy('reobfJar')
 
+tasks.getByName("jar").configure {
+    exclude 'io/github/nebulachroniclesteam/nch/codegen/*'
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -116,4 +127,8 @@ publishing {
             url "file://${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+sourceTasks {
+    packageName = "io.github.nebulachroniclesteam.nch.codegen"
 }
