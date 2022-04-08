@@ -1,3 +1,5 @@
+tasks.withType (JavaCompile) { options.encoding = "UTF-8" }
+
 buildscript {
     repositories {
         // maven { url "https://maven.aliyun.com/repository/public/" }
@@ -89,7 +91,7 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-    implementation fg.deobf("curse.maven:scannable-266784:3551507")
+    //implementation fg.deobf("curse.maven:scannable-266784:3551507")
     compileOnly 'in.lq2007:UselessPluginLib:1.2.0'
     compileOnly group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
 }

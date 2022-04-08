@@ -8,13 +8,14 @@ import com.mojang.datafixers.util.Function3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
 import net.minecraft.data.info.WorldgenRegistryDumpReport;
-import net.minecraft.resources.RegistryWriteOps;
+import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -30,7 +31,6 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.*;
-import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,8 +47,8 @@ public abstract class BaseWorldProvider implements DataProvider {
     private final Gson gson = (new GsonBuilder()).setPrettyPrinting().create();
     private final Logger logger = LogManager.getLogger();
 
-    private final RegistryAccess registryAccess = RegistryAccess.builtin();
-    private final DynamicOps<JsonElement> ops = RegistryWriteOps.create(JsonOps.INSTANCE, registryAccess);
+    private final RegistryAccess registryAccess = RegistryAccess.builtinCopy();
+    private final DynamicOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, registryAccess);
     private final Map<Class<? extends BiomeSource>, BiFunction<BiomeSource, JsonElement, JsonElement>> biomeFixers = new HashMap<>();
     private final boolean dump;
 
@@ -58,16 +58,21 @@ public abstract class BaseWorldProvider implements DataProvider {
     private final DimensionType dummyType = DimensionType.create(OptionalLong.empty(), false, false,
             false, false, 1, false, false,
             false, false, false, 0, 16, 16,
-            BlockTags.INFINIBURN_OVERWORLD.getName(), DimensionType.OVERWORLD_EFFECTS, 0);
-    private final NoiseGeneratorSettings dummyNoiseSettings = new NoiseGeneratorSettings(new StructureSettings(false),
-            new NoiseSettings(0, 0, new NoiseSamplingSettings(1, 1, 1, 1),
-                    new NoiseSlider(0, 0, 0),
-                    new NoiseSlider(0, 0, 0),
-                    1, 1, false, false, false,
-                    TerrainShaper.overworld(false)),
+            BlockTags.INFINIBURN_OVERWORLD, DimensionType.OVERWORLD_EFFECTS, 0);
+
+    private final NoiseSettings settings = new NoiseSettings(0, 0,
+            new NoiseSamplingSettings(1, 1, 1, 1),
+            new NoiseSlider(0, 0, 0),
+            new NoiseSlider(0, 0, 0),
+            1, 1,
+            TerrainShaper.overworld(false));
+
+    private final NoiseGeneratorSettings dummyNoiseSettings = new NoiseGeneratorSettings(
+            settings,
             Blocks.AIR.defaultBlockState(), Blocks.AIR.defaultBlockState(),
+            NoiseRouterData.overworldWithNewCaves(settings, false),
             sequence().ifAbovePreliminarySurface(SurfaceRules.state(Blocks.STONE.defaultBlockState())).build(),
-            0, false, false, false, false, false, false);
+            0, false, false, false, false);
 
     public BaseWorldProvider(DataGenerator generator, String modid, boolean dump) {
         this.generator = generator;
@@ -123,36 +128,25 @@ public abstract class BaseWorldProvider implements DataProvider {
     }
 
     public NoiseBasedChunkGenerator noiseGenerator(BiomeSource biomeSource, long seed, NoiseGeneratorSettings settings) {
-        return new NoiseBasedChunkGenerator(registryAccess.registryOrThrow(Registry.NOISE_REGISTRY), biomeSource, seed, () -> settings);
-    }
-
-    public NoiseBasedChunkGenerator noiseGenerator(BiomeSource biomeSource, long seed, ResourceLocation settings) {
-        return new NoiseBasedChunkGenerator2(registryAccess.registryOrThrow(Registry.NOISE_REGISTRY), biomeSource, seed, settings);
+        return WorldGenSettings.makeOverworld(registryAccess, seed, NoiseGeneratorSettings.OVERWORLD);
     }
 
     public NoiseBasedChunkGenerator noiseGenerator(BiomeSource biomeSource, NoiseGeneratorSettings settings) {
         return noiseGenerator(biomeSource, 0, settings);
     }
 
-    public NoiseBasedChunkGenerator noiseGenerator(BiomeSource biomeSource, ResourceLocation settings) {
-        return noiseGenerator(biomeSource, 0, settings);
-    }
-
-    public NoiseGeneratorSettings generatorSettings(StructureSettings structureSettings,
-                                                    NoiseSettings noiseSettings,
+    public NoiseGeneratorSettings generatorSettings(NoiseSettings noiseSettings,
                                                     BlockState defaultBlock,
                                                     BlockState defaultFluid,
                                                     SurfaceRules.RuleSource surfaceRule,
+                                                    NoiseRouterWithOnlyNoises noiseRouter,
                                                     int seaLevel,
                                                     boolean disableMobGeneration,
                                                     boolean aquifersEnabled,
-                                                    boolean noiseCavesEnabled,
                                                     boolean oreVeinsEnabled,
-                                                    boolean noodleCavesEnabled,
-                                                    boolean isLegacyAlgorithm) {
-        return new NoiseGeneratorSettings(structureSettings, noiseSettings, defaultBlock, defaultFluid, surfaceRule,
-                seaLevel, disableMobGeneration, aquifersEnabled, noiseCavesEnabled, oreVeinsEnabled,
-                noodleCavesEnabled, isLegacyAlgorithm);
+                                                    boolean useLegacyRandomSource) {
+        return new NoiseGeneratorSettings(noiseSettings, defaultBlock, defaultFluid, noiseRouter, surfaceRule,
+                seaLevel, disableMobGeneration, aquifersEnabled, oreVeinsEnabled, useLegacyRandomSource);
     }
 
     public SurfaceRules.RuleSource ifTrue(SurfaceRules.ConditionSource ifTrue, SurfaceRules.RuleSource thenRun) {
@@ -199,7 +193,7 @@ public abstract class BaseWorldProvider implements DataProvider {
         // stems
         Map<ResourceLocation, Stem> stems = new HashMap<>();
         addLevelStems(stems);
-        save(path, cache, Registry.LEVEL_STEM_REGISTRY, stems, stem -> new LevelStem(() -> dummyType, stem.generator, stem.useServerSeed), LevelStem.CODEC, (stem, levelStem, json) -> {
+        save(path, cache, Registry.LEVEL_STEM_REGISTRY, stems, stem -> new LevelStem(Holder.direct(dummyType), stem.generator, stem.useServerSeed), LevelStem.CODEC, (stem, levelStem, json) -> {
             JsonObject object = json.getAsJsonObject();
             object.addProperty("type", stem.dimension.toString());
             BiomeSource bs = levelStem.generator().getBiomeSource();
@@ -207,7 +201,7 @@ public abstract class BaseWorldProvider implements DataProvider {
             if (fixer != null) {
                 json = fixer.apply(bs, json);
             }
-            if (stem.generator instanceof NoiseBasedChunkGenerator2 noiseGenerator) {
+            if (stem.generator instanceof NoiseBasedChunkGenerator noiseGenerator) {
                 object.getAsJsonObject("generator").remove("settings");
                 object.getAsJsonObject("generator").addProperty("settings", noiseGenerator.settings.toString());
             }
@@ -306,16 +300,6 @@ public abstract class BaseWorldProvider implements DataProvider {
 
         public SurfaceRules.RuleSource build() {
             return SurfaceRules.sequence(rules.toArray(SurfaceRules.RuleSource[]::new));
-        }
-    }
-
-    class NoiseBasedChunkGenerator2 extends NoiseBasedChunkGenerator {
-
-        final ResourceLocation settings;
-
-        public NoiseBasedChunkGenerator2(Registry<NormalNoise.NoiseParameters> p_188609_, BiomeSource p_188610_, long p_188611_, ResourceLocation settings) {
-            super(p_188609_, p_188610_, p_188611_, () -> dummyNoiseSettings);
-            this.settings = settings;
         }
     }
 }
